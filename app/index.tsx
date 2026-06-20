@@ -1,14 +1,14 @@
 import { Text, View } from "react-native";
 
 
-const RootLayout = () => {
+const Index = () => {
     return <>
-        <View className="flex-1 bg-red-600">
-            <Text className="">
-                Hola Mundo
+        <View className="flex-1 bg-blue-600">
+            <Text className="font-bold">
+                Hola Mundo 2
             </Text>
         </View>
     </>;
 }
 
-export default RootLayout;
+export default Index;
