@@ -3,9 +3,15 @@ import { Text, View } from "react-native";
 
 const Index = () => {
     return <>
-        <View className="flex-1 bg-blue-600">
-            <Text className="font-bold">
+        <View className="flex-1">
+            <Text className="font-bold text-3xl">
                 Hola Mundo 2
+            </Text>
+            <Text>
+                { process.env.EXPO_PUBLIC_MOVIE_DB_URL }
+            </Text>
+            <Text>
+                { process.env.EXPO_PUBLIC_MOVIE_DB_KEY }
             </Text>
         </View>
     </>;
