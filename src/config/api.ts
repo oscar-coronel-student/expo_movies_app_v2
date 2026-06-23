@@ -1,21 +1,41 @@
-import axios, { AxiosRequestConfig } from 'axios';
+import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 
-const config: AxiosRequestConfig = {
-    // head
-}
-
-axios.create
 
 export class Api {
 
-    protected config: AxiosRequestConfig = {
-        baseURL: process.env.EXPO_PUBLIC_MOVIE_DB_URL,
-        responseType: 'json',
-        params: {
-            language: '',
-            page: 1
-        },
+    protected oAxios!: AxiosInstance;
+    private config: AxiosRequestConfig;
+
+    constructor(){
+        this.config = {
+            baseURL: process.env.EXPO_PUBLIC_MOVIE_DB_URL,
+            responseType: 'json',
+            params: {
+                language: 'es-EC',
+                page: 1
+            },
+            headers: {
+                Authorization: `Bearer ${ process.env.EXPO_PUBLIC_MOVIE_DB_ACCESS_TOKEN }`
+            }
+        }
+
+        this.__reload();
     }
+
+    private __reload(){
+        this.oAxios = axios.create( this.config );
+        this.oAxios.interceptors.request.use( ( config ) => {
+            return {
+                ...config
+            };
+        });
+        this.oAxios.interceptors.response.use( ( response ) => {
+            return {
+                ...response
+            };
+        })
+    }
+
 
     protected setConfig(newConfig: AxiosRequestConfig, type: 'replace'|'new' = 'new') {
         if( type === 'new' )
@@ -26,7 +46,10 @@ export class Api {
                 ...newConfig
             };
         }
+
+        this.__reload();
         return this;
     }
+
 
 }
