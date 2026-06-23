@@ -1,14 +1,13 @@
-import { MovieLists } from "@/src/api/api.themoviedb.org/MovieLists";
+import { MovieRepository } from "@/src/infrastructure/repositories/MovieRepository";
 import { useEffect } from "react";
 import { Text, View } from "react-native";
 
+const movieRepository = new MovieRepository();
 
 const Index = () => {
 
     useEffect(() => {
-        const movieLists = new MovieLists();
-        console.log('hola mundo');
-        movieLists.getNowPlaying();
+        movieRepository.getNowPlayingMovies();
     }, []);
 
 
