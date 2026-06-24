@@ -1,23 +1,44 @@
 import { isAxiosError, isCancel } from "axios";
-import { ErrorPresentation } from "../interfaces/Error.interface";
+import { ErrorTypes } from "../interfaces/Error.interface";
 import { CustomError } from "../interfaces/Response.interface";
 
 
 export class ErrorHandler {
 
     static readonly getError = (error: unknown): CustomError => {
+        let type: ErrorTypes = 'general';
+        let message: string = '';
+        let original_message: string = '';
+
         if( isCancel( error ) ){
-            
+            return {
+                ok: false,
+                data: {
+                    type: 'timeout',
+                    message: 'Límite de espera excedido',
+                    original_message: error.message
+                }
+            };
         } else if ( isAxiosError( error ) ){
-
+            return {
+                ok: false,
+                data: {
+                    type: 'axios',
+                    message: 'Error del Servidor',
+                    original_message: error.message
+                }
+            };
         }
-        
-        const errorPresentation: ErrorPresentation = {
-            type: 'general',
-            message: ''
-        };
 
-        return { ok: false, data: errorPresentation };
+        return {
+            ok: false,
+            data: {
+                type: 'general',
+                message: typeof error === 'object'
+                    ? JSON.stringify(error)
+                    : ''
+            }
+        };
     }
 
 }

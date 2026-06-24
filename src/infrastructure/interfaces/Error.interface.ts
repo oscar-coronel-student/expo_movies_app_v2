@@ -1,18 +1,18 @@
 
 export type ErrorPresentation = 
     | {
-        type: 'offline',
-        message: string
-    }
-    | {
         type: 'axios',
         message: string
+        original_message: string
     }
     | {
         type: 'timeout',
-        message: string
+        message: string,
+        original_message: string
     }
     | {
         type: 'general',
         message: string
     }
+
+export type ErrorTypes = ErrorPresentation['type']
