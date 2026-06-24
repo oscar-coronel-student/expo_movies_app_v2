@@ -7,7 +7,13 @@ const movieRepository = new MovieRepository();
 const Index = () => {
 
     useEffect(() => {
-        movieRepository.getNowPlayingMovies();
+        movieRepository.getNowPlayingMovies().then(response => {
+            if(response.ok){
+                response.data
+            } else {
+                response.data
+            }
+        });
     }, []);
 
 
