@@ -6,11 +6,6 @@ export type ErrorPresentation =
         original_message: string
     }
     | {
-        type: 'timeout',
-        message: string,
-        original_message: string
-    }
-    | {
         type: 'general',
         message: string
     }
