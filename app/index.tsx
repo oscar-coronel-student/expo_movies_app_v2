@@ -1,20 +1,22 @@
 import { MovieRepository } from "@/src/infrastructure/repositories/MovieRepository";
-import { useEffect } from "react";
-import { Text, View } from "react-native";
+import { Pressable, Text, View } from "react-native";
 
 const movieRepository = new MovieRepository();
 
 const Index = () => {
 
-    useEffect(() => {
+    const handleTest = () => {
+        console.log('INTENTANDO')
         movieRepository.getNowPlayingMovies().then(response => {
             if(response.ok){
-                response.data
+                const data = response.data;
+                console.log({ data });
             } else {
-                response.data
+                const error = response.data;
+                console.log({error});
             }
         });
-    }, []);
+    }
 
 
     return <>
@@ -28,6 +30,26 @@ const Index = () => {
             <Text>
                 { process.env.EXPO_PUBLIC_MOVIE_DB_KEY }
             </Text>
+            <Pressable
+                style={ ({ pressed }) => {
+                    return {
+                        backgroundColor: 'blue',
+                        flexDirection: 'row',
+                        justifyContent: 'center',
+                        paddingVertical: 10,
+                        width: 200,
+                        borderRadius: 7,
+                        opacity: pressed ? 0.6 : 1
+                    }
+                }}
+                onPress={handleTest}
+            >
+                <Text
+                    style={{ color: 'white' }}
+                >
+                    Testing
+                </Text>
+            </Pressable>
         </View>
     </>;
 }

@@ -15,7 +15,8 @@ export class Api {
                 page: 1
             },
             headers: {
-                Authorization: `Bearer ${ process.env.EXPO_PUBLIC_MOVIE_DB_ACCESS_TOKEN }`
+                Authorization: `Bearer ${ process.env.EXPO_PUBLIC_MOVIE_DB_ACCESS_TOKEN }`,
+                'cache-control': 'no-cache'
             }
         }
 

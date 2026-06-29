@@ -12,7 +12,7 @@ export class MovieLists extends Api {
     private readonly nowPlayingEndpoint: string = '/now_playing';
 
     public getNowPlaying = async (): Promise<MovieResponse<Movie>> => {
-        const response = await this.oAxios.get<any, AxiosMovieResponse>( this.nowPlayingEndpoint );
+        const response = await this.oAxios.get<any, AxiosMovieResponse>( this.nowPlayingEndpoint, { params: {page: 1} } );
         const data = response.data;
         return data;
     }
