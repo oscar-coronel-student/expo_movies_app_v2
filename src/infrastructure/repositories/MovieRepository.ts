@@ -1,7 +1,7 @@
 import { MovieLists } from "@/src/api/api.themoviedb.org/MovieLists";
 import { ErrorHandler } from "../handlers/ErrorHandler";
 import { ResponseHandler } from "../handlers/ResponseHandler";
-import { MoviePresentation } from "../interfaces/Movie.interface";
+import { MoviePresentation } from "../interfaces/MoviePresentation.interface";
 import { AppAsyncResponse } from "../interfaces/Response.interface";
 import { MovieMapper } from "../mappers/MovieMapper";
 

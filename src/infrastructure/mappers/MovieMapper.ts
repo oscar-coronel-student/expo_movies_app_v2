@@ -1,5 +1,5 @@
 import { Movie } from "@/src/domain/models/Movie";
-import { MoviePresentation } from "../interfaces/Movie.interface";
+import { MoviePresentation } from "../interfaces/MoviePresentation.interface";
 
 
 export class MovieMapper {
@@ -9,11 +9,11 @@ export class MovieMapper {
         return {
             id: model.id,
             title: model.title,
-            original_title: model.original_title,
-            overview: model.overview,
-            video: model.video,
-            vote_count: model.vote_count,
-            vote_average: model.vote_average
+            description: model.overview,
+            releaseDate: new Date(model.release_date),
+            rating: model.popularity,
+            poster: model.poster_path,
+            backdrop: model.backdrop_path
         };
     }
 
