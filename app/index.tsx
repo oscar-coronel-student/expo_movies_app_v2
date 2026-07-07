@@ -6,7 +6,6 @@ const movieRepository = new MovieRepository();
 const Index = () => {
 
     const handleTest = () => {
-        console.log('INTENTANDO')
         movieRepository.getNowPlayingMovies().then(response => {
             if(response.ok){
                 const data = response.data;
