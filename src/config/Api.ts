@@ -12,10 +12,10 @@ export class Api {
             responseType: 'json',
             params: {
                 language: 'es-EC',
-                page: 1
+                page: 1,
+                api_key: process.env.EXPO_PUBLIC_MOVIE_DB_KEY
             },
             headers: {
-                Authorization: `Bearer ${ process.env.EXPO_PUBLIC_MOVIE_DB_ACCESS_TOKEN }`,
                 'cache-control': 'no-cache'
             }
         }
