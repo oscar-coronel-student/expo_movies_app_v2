@@ -12,9 +12,13 @@ export class MovieMapper {
             description: model.overview,
             releaseDate: new Date(model.release_date),
             rating: model.popularity,
-            poster: model.poster_path,
-            backdrop: model.backdrop_path
+            poster: MovieMapper.getUri(model.poster_path),
+            backdrop: MovieMapper.getUri(model.backdrop_path)
         };
+    }
+
+    static readonly getUri = (endpoint: string): string => {
+        return `https://image.tmdb.org/t/p/w500${endpoint}`;
     }
 
 }
