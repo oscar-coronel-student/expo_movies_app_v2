@@ -11,7 +11,7 @@ export class MovieMapper {
             title: model.title,
             description: model.overview,
             releaseDate: new Date(model.release_date),
-            rating: model.popularity,
+            rating: model.vote_average,
             poster: MovieMapper.getUri(model.poster_path),
             backdrop: MovieMapper.getUri(model.backdrop_path)
         };
